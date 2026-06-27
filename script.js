@@ -51,8 +51,18 @@ function createTodoItem(text) {
   deleteButton.textContent = "Delete";
 
   deleteButton.addEventListener("click", () => {
-    item.remove();
-    renderEmptyState();
+    const removeItem = () => {
+      if (!item.isConnected) {
+        return;
+      }
+
+      item.remove();
+      renderEmptyState();
+    };
+
+    item.addEventListener("animationend", removeItem, { once: true });
+    item.classList.add("removing");
+    window.setTimeout(removeItem, 260);
   });
 
   item.append(label, deleteButton);
