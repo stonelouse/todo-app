@@ -1,11 +1,27 @@
 :root {
-  --bg: #f5f7fb;
+  --bg-start: #eef2ff;
+  --bg-end: #f8fafc;
   --card: #ffffff;
   --text: #1f2937;
   --muted: #6b7280;
   --accent: #1d4ed8;
   --danger: #b91c1c;
   --border: #dbe3ef;
+  --toggle-bg: #e5e7eb;
+  --toggle-text: #1f2937;
+}
+
+:root[data-theme="dark"] {
+  --bg-start: #0f172a;
+  --bg-end: #111827;
+  --card: #111827;
+  --text: #f3f4f6;
+  --muted: #9ca3af;
+  --accent: #60a5fa;
+  --danger: #fca5a5;
+  --border: #334155;
+  --toggle-bg: #1f2937;
+  --toggle-text: #f3f4f6;
 }
 
 * {
@@ -15,7 +31,7 @@
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
   color: var(--text);
   min-height: 100vh;
   display: grid;
@@ -36,6 +52,32 @@ h1 {
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 1.5rem;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.app-header h1 {
+  margin: 0;
+}
+
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--toggle-bg);
+  color: var(--toggle-text);
+  border-radius: 8px;
+  padding: 0.45rem 0.65rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  filter: brightness(1.07);
 }
 
 .todo-form {
