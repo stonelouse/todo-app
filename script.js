@@ -39,7 +39,7 @@ function removeEmptyState() {
 
 function createTodoItem(text) {
   const item = document.createElement("li");
-  item.className = "todo-item";
+  item.className = "todo-item todo-item-enter";
 
   const label = document.createElement("span");
   label.className = "todo-text";
@@ -56,6 +56,9 @@ function createTodoItem(text) {
   });
 
   item.append(label, deleteButton);
+  item.addEventListener("animationend", () => {
+    item.classList.remove("todo-item-enter");
+  });
   return item;
 }
 
